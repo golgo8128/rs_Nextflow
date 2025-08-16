@@ -4,7 +4,7 @@
  * Use echo to print 'Hello World!' to a file
  */
 
-params.greeting = 'greetings.csv'
+params.greeting = "${System.getenv('RS_PROG_DIR')}/ProgTestData/TextFiles/greetings_single_column1_1.csv"
 params.batch = 'test-batch'
 
 /*
