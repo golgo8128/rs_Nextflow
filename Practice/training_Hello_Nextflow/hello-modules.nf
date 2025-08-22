@@ -9,9 +9,9 @@ params.batch = 'test-batch'
 
 
 // Include modules
-include { sayHello } from './modules/sayHello.nf'
-include { convertToUpper } from './modules/convertToUpper.nf'
-include { collectGreetings } from './modules/collectGreetings.nf'
+include { sayHello } from '../modules/sayHello.nf'
+include { convertToUpper } from '../modules/convertToUpper.nf'
+include { collectGreetings } from '../modules/collectGreetings.nf'
 
 
 workflow {
