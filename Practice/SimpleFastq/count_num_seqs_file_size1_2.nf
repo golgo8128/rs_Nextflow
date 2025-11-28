@@ -1,6 +1,6 @@
 nextflow.enable.dsl=2
 
-params.fastq = "sample.fastq"  // 入力ファイルを指定
+params.fastq = "DRR515002_partial1.fastq"  // 入力ファイルを指定
 
 workflow {
     // 入力ファイルをチャネルに変換
@@ -16,37 +16,37 @@ workflow {
 
 process get_size {
     input:
-    path fastq
+       path fastq
 
     output:
-    path "file_size.txt"
+       path "file_size.txt"
 
     script:
     """
-    ls -l \$fastq | awk '{print \$5} > file_size.txt'
+    ls -l \$fastq | awk '{ print \$5 } > file_size.txt'
     """
 }
 
 process count_reads {
     input:
-    path fastq
+       path fastq
 
     output:
-    path "num_seqs.txt"
+       path "num_seqs.txt"
 
     script:
     """
-    awk 'END {print NR/4}' \$fastq > num_seqs.txt
+    awk 'END { print NR/4 }' \$fastq > num_seqs.txt
     """
 }
 
 process report {
     input:
-    path file_size
-    path num_seqs    
+       path file_size
+       path num_seqs    
 
     output:
-    path "report.txt"
+       path "report.txt"
 
     script:
     """
@@ -56,5 +56,6 @@ process report {
     echo "Read count:"          >> report.txt
     cat  ${num_seqs}            >> report.txt
     """
+
 }
 
